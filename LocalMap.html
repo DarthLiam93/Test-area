@@ -34,81 +34,56 @@
       <br> <br>
       
    	<iframe
-<!DOCTYPE html>
 <html>
-<head>
-    <title>Map with Search Bar</title>
-    <style>
-        #map {
-            height: 650px;  /* Adjust the height as needed */
-            width: 400%;    /* Adjust the width as needed */
-        }
-    </style>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyADwav2BBv7ldF6OtoGijg8-22KociIDX0&libraries=places"></script>
-</head>
-<body>
-    <input id="searchInput" type="text" placeholder="Search for places..." />
-    <div id="map"></div>
+  <head>
+    <title>Place Autocomplete Address Form</title>
 
-    <script>
-        function initMap() {
-            const customMapStyle = [/* Your custom style JSON here */];
-
-            const map = new google.maps.Map(document.getElementById("map"), {
-                center: { lat: -34.397, lng: 150.644 },
-                zoom: 8,
-                styles: customMapStyle, // Apply your custom style
-            });
-
-            const input = document.getElementById("searchInput");
-            const searchBox = new google.maps.places.SearchBox(input);
-
-            map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
-
-            map.addListener("bounds_changed", () => {
-                searchBox.setBounds(map.getBounds());
-            });
-
-            let markers = [];
-            searchBox.addListener("places_changed", () => {
-                const places = searchBox.getPlaces();
-
-                if (places.length === 0) {
-                    return;
-                }
-
-                // Clear out the old markers.
-                markers.forEach(marker => marker.setMap(null));
-                markers = [];
-
-                const bounds = new google.maps.LatLngBounds();
-                places.forEach(place => {
-                    if (!place.geometry) {
-                        console.log("Returned place contains no geometry");
-                        return;
-                    }
-
-                    const marker = new google.maps.Marker({
-                        map,
-                        title: place.name,
-                        position: place.geometry.location,
-                    });
-
-                    markers.push(marker);
-
-                    if (place.geometry.viewport) {
-                        bounds.union(place.geometry.viewport);
-                    } else {
-                        bounds.extend(place.geometry.location);
-                    }
-                });
-                map.fitBounds(bounds);
-            });
-        }
-
-        window.onload = initMap;
-    </script>
-</body>
+    <link
+      href="https://fonts.googleapis.com/css?family=Roboto:400,500"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <form id="address-form" action="" method="get" autocomplete="off">
+      <p class="title">Sample address form for North America</p>
+      <p class="note"><em>* = required field</em></p>
+      <label class="full-field">
+        <span class="form-label">Deliver to*</span>
+        <input
+          id="ship-address"
+          name="ship-address"
+          required
+          autocomplete="off"
+        />
+      </label>
+      <label class="full-field">
+        <span class="form-label">Apartment, unit, suite, or floor #</span>
+        <input id="address2" name="address2" />
+      </label>
+      <label class="full-field">
+        <span class="form-label">City*</span>
+        <input id="locality" name="locality" required />
+      </label>
+      <label class="slim-field-start">
+        <span class="form-label">State/Province*</span>
+        <input id="state" name="state" required />
+      </label>
+      <label class="slim-field-end" for="postal_code">
+        <span class="form-label">Postal code*</span>
+        <input id="postcode" name="postcode" required />
+      </label>
+      <label class="full-field">
+        <span class="form-label">Country/Region*</span>
+        <input id="country" name="country" required />
+      </label>
+      <button type="button" class="my-button">Save address</button>
+      <input type="reset" value="Clear form" />
+    </form>
+    <script
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyADwav2BBv7ldF6OtoGijg8-22KociIDX0&callback=initAutocomplete&libraries=places&v=weekly"
+      defer
+    ></script>
+  </body>
 </html>
 
   </iframe>
