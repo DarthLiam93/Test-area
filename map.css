@@ -13,6 +13,5 @@ body{
 }
 
 #map {
-  height: 640;
-  width: 480;
+  height: 60px;
 }
