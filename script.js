@@ -10,7 +10,7 @@ async function initMap() {
   });
 
   // Set the source for the KML layer
-  const src = 'https://console.cloud.google.com/google/maps-apis/datasets?project=wynnewood-primary-lines';
+  const src = 'https://github.com/DarthLiam93/Test-area/blob/test-branch/WynnewoodPrimaryLines.kml';
   
   // Create the KML layer
   const kmlLayer = new google.maps.KmlLayer({
