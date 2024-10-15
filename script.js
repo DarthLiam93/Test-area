@@ -9,13 +9,13 @@ async function initMap() {
     zoom: 15,
   });
 
-  // Set the source for the KML layer
-  const src = 'https://www.google.com/maps/d/u/0/kml?forcekml=1&mid=1dA7PUZTCP12TZ5QE0QaaSbspttkbpZs&lid=0521LZf3y08';
 
   // Create the KML layer
-  const kmlLayer = new google.maps.KmlLayer({
-    url: src,
-    suppressInfoWindows: true,
+const ctaLayer = new google.maps.KmlLayer({
+    url: "https://www.google.com/maps/d/u/0/kml?forcekml=1&mid=1dA7PUZTCP12TZ5QE0QaaSbspttkbpZs&lid=0521LZf3y08",
+    map: map,
+  });
+    suppressInfoWindows: false,
     preserveViewport: false,
     map: map
   });
