@@ -11,7 +11,7 @@ async function initMap() {
 
   // Create the KML layer
   const kmlLayer = new google.maps.KmlLayer({
-    url: src,
+    url: "https://github.com/DarthLiam93/Test-area/blob/test-branch/WynnewoodPrimaryLines.kml",
     suppressInfoWindows: true,
     preserveViewport: false,
     map: map
