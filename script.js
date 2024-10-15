@@ -11,7 +11,7 @@ async function initMap() {
 
   // Set the source for the KML layer
   const src = 'https://github.com/DarthLiam93/Test-area/blob/test-branch/WynnewoodPrimaryLines.kml';
-  const src = 'https://https://github.com/DarthLiam93/Test-area/blob/test-branch/WynnewoodPrimaryLines.kml';
+  const src = 'https://github.com/DarthLiam93/Test-area/blob/test-branch/WynnewoodPrimaryLines.kml';
 
   // Create the KML layer
   const kmlLayer = new google.maps.KmlLayer({
