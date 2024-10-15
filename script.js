@@ -13,11 +13,9 @@ async function initMap() {
   const src = 'https://www.google.com/maps/d/u/0/kml?forcekml=1&mid=1dA7PUZTCP12TZ5QE0QaaSbspttkbpZs&lid=0521LZf3y08';
   
   // Create the KML layer
-  const kmlLayer = new google.maps.KmlLayer({
-    url: src,
-    suppressInfoWindows: true,
-    preserveViewport: false,
-    map: map
+const ctaLayer = new google.maps.KmlLayer({
+    url: "https://googlearchive.github.io/js-v2-samples/ggeoxml/cta.kml",
+    map: map,
   });
 }
 
