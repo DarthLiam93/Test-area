@@ -14,7 +14,7 @@ async function initMap() {
   
   // Create the KML layer
 const ctaLayer = new google.maps.KmlLayer({
-    url: "https://googlearchive.github.io/js-v2-samples/ggeoxml/cta.kml",
+    url: "https://github.com/DarthLiam93/Test-area/blob/test-branch/WynnewoodPrimaryLines.kml",
     map: map,
   });
 }
