@@ -16,19 +16,6 @@ async function initMap() {
     preserveViewport: false,
     map: map
   });
-
-    kmlLayer.addListener("click", (kmlEvent) => {
-    const text = kmlEvent.featureData.description;
-
-    showInContentWindow(text);
-  });
-
-  function showInContentWindow(text) {
-    const sidebar = document.getElementById("sidebar");
-
-    sidebar.innerHTML = text;
-  }
-}
 }
 
 initMap();
