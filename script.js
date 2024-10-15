@@ -7,7 +7,6 @@ async function initMap() {
   map = new Map(document.getElementById("map"), {
     center: { lat: 34.644, lng: -97.161 },
     zoom: 15,
-  });
 
 
   // Create the KML layer
@@ -18,7 +17,7 @@ const ctaLayer = new google.maps.KmlLayer({
     suppressInfoWindows: false,
     preserveViewport: false,
     map: map
-  });
+  }); });
 }
 
 initMap();
