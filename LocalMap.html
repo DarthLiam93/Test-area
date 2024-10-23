@@ -19,3 +19,53 @@
 </script>
 </body>
 </html>
+
+//Modification Information
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Local Network</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyADwav2BBv7ldF6OtoGijg8-22KociIDX0"></script>
+</head>
+<body onload="initMap()">
+
+    <h1>Test</h1>
+    <div id="map" style="height: 400px; width: 100%;"></div>
+
+    <script>
+        async function fetchMarkers() {
+            const response = await fetch('http://localhost:3000/markers'); // Adjust URL if needed
+            return await response.json();
+        }
+
+        async function initMap() {
+            const map = new google.maps.Map(document.getElementById("map"), {
+                center: { lat: -34.397, lng: 150.644 }, // Set initial center
+                zoom: 8,
+            });
+
+            // Add KML Layer
+            const kmlLayer = new google.maps.KmlLayer({
+                url: 'YOUR_KML_URL', // Replace with your KML file URL
+                map: map,
+            });
+
+            // Fetch and add markers
+            const markers = await fetchMarkers();
+            markers.forEach(marker => {
+                new google.maps.Marker({
+                    position: { lat: marker.lat, lng: marker.lng },
+                    map: map,
+                    title: marker.title,
+                });
+            });
+        }
+    </script>
+</body>
+</html>
+
