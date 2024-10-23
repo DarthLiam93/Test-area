@@ -16,6 +16,14 @@ async function initMap() {
     preserveViewport: false,
     map: map
   });
+    const markers = await fetchMarkers();
+      markers.forEach(marker => {
+        new google.maps.Marker({
+          position: { lat: marker.lat, lng: marker.lng },
+          map: map,
+          title: marker.title,
+            });
+            });
 }
 
 initMap();
