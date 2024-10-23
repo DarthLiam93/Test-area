@@ -1,5 +1,9 @@
 let map;
 
+  async function fetchMarkers() {
+    const response = await fetch('http://localhost:3000/markers'); // Adjust URL if needed
+    return await response.json();
+}
 async function initMap() {
   const { Map } = await google.maps.importLibrary("maps");
 
