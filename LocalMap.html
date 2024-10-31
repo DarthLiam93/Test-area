@@ -27,6 +27,37 @@
     display: table;
     clear: both;
     }
+
+     // TEST AREA
+     .bubble {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            margin: 20px;
+            transition: background-color 0.3s;
+        }
+        .match {
+            background-color: lightgreen;
+        }
+        .no-match {
+            background-color: lightcoral;
+        }
+        .low-value {
+            background-color: lightyellow;
+        }
+        .medium-value {
+            background-color: lightblue;
+        }
+        .high-value {
+            background-color: lightgreen;
+        }
+     //TEST AREA
+
+     
     </style>
  </head>
  <iframe src="https://www.google.com/maps/d/u/1/embed?mid=1dA7PUZTCP12TZ5QE0QaaSbspttkbpZs&ehbc=2E312F" width="1000" height="520"></iframe>
@@ -2448,7 +2479,38 @@ Howell<br>
         </div>
         <div class="column right" style="background-color:#74C3E1;">
             <h2>Status</h2>
-            <p>Data..</p>
+            <p>
+             //TEST AREA
+             <div class="bubble" id="bubble">Bubble</div>
+    <div id="existingData">Some specific information</div> <!-- Data to compare with -->
+
+         <script>
+        const storedData = localStorage.getItem('bubbleData');
+        const existingData = document.getElementById('existingData').innerText;
+        const numericValue = parseInt(localStorage.getItem('numericValue'));
+        const bubble = document.getElementById('bubble');
+
+        if (storedData) {
+            bubble.innerText = storedData;
+            // Compare stored data with existing data
+            if (storedData === existingData) {
+                bubble.classList.add('match');
+            } else {
+                bubble.classList.add('no-match');
+            }
+
+            // Change bubble color based on numeric value
+            if (numericValue < 50) {
+                bubble.classList.add('low-value');
+            } else if (numericValue >= 50 && numericValue < 100) {
+                bubble.classList.add('medium-value');
+            } else {
+                bubble.classList.add('high-value');
+            }
+        }
+         </script>
+         // TEST AREA
+             Data..</p>
         </div>
     </div>
  </body>
