@@ -29,31 +29,16 @@
     }
 
      // TEST AREA
-     .bubble {
+        .bubble {
             width: 100px;
             height: 100px;
             border-radius: 50%;
             display: flex;
-            align-items: center;
             justify-content: center;
-            font-size: 16px;
-            margin: 20px;
-            transition: background-color 0.3s;
-        }
-        .match {
-            background-color: lightgreen;
-        }
-        .no-match {
-            background-color: lightcoral;
-        }
-        .low-value {
-            background-color: lightyellow;
-        }
-        .medium-value {
-            background-color: lightblue;
-        }
-        .high-value {
-            background-color: lightgreen;
+            align-items: center;
+            color: white;
+            font-weight: bold;
+            margin-top: 20px; /* For spacing */
         }
      //TEST AREA
 
@@ -2480,34 +2465,41 @@ Howell<br>
         <div class="column right" style="background-color:#74C3E1;">
             <h2>Status</h2>
             <p>
+             
              //TEST AREA
-             <div class="bubble" id="bubble">Bubble</div>
-    <div id="existingData">Some specific information</div> <!-- Data to compare with -->
+             
+<div id="bubble" class="bubble">0</div>
+<script>
+async function fetchData(url) {
+    const response = await fetch(url);
+    const text = await response.text();
+    const parser = new DOMParser();
+    const doc = parser.parseFromString(text, 'text/html');
+    const value = parseFloat(doc.querySelector('#value').textContent);
+    const address = doc.querySelector('#address').textContent;
+    return { value, address };
+}
 
-         <script>
-        const storedData = localStorage.getItem('bubbleData');
-        const existingData = document.getElementById('existingData').innerText;
-        const numericValue = parseInt(localStorage.getItem('numericValue'));
+async function compareValues() {
+    try {
+        const data1 = await fetchData('page1.html'); // Fetch from page 1
+        const data2 = { value: 42, address: '123 Main St, Springfield' }; // Example values from page 2
+
         const bubble = document.getElementById('bubble');
+        bubble.textContent = data1.value;
 
-        if (storedData) {
-            bubble.innerText = storedData;
-            // Compare stored data with existing data
-            if (storedData === existingData) {
-                bubble.classList.add('match');
-            } else {
-                bubble.classList.add('no-match');
-            }
-
-            // Change bubble color based on numeric value
-            if (numericValue < 50) {
-                bubble.classList.add('low-value');
-            } else if (numericValue >= 50 && numericValue < 100) {
-                bubble.classList.add('medium-value');
-            } else {
-                bubble.classList.add('high-value');
-            }
+        // Compare addresses
+        if (data1.address === data2.address) {
+            bubble.style.backgroundColor = 'green'; // Addresses match
+        } else {
+            bubble.style.backgroundColor = 'red'; // Addresses do not match
         }
+    } catch (error) {
+        console.error('Error fetching data:', error);
+    }
+}
+
+compareValues();
          </script>
          // TEST AREA
              Data..</p>
