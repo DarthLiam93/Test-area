@@ -2470,8 +2470,8 @@ Howell<br>
              
 <div id="bubble" class="bubble">0</div>
 <script>
-async function fetchData(https:github.com/DarthLiam93/Test-area/blob/main/ValuesPage.html) {
-    const response = await fetch(https:github.com/DarthLiam93/Test-area/blob/main/ValuesPage.html);
+async function fetchData(https://DarthLiam93.github.io/Test-area/ValuesPage.html) {
+    const response = await fetch(https://DarthLiam93.github.io/Test-area/ValuesPage.html);
     const text = await response.text();
     const parser = new DOMParser();
     const doc = parser.parseFromString(text, 'text/html');
@@ -2482,7 +2482,7 @@ async function fetchData(https:github.com/DarthLiam93/Test-area/blob/main/Values
 
 async function compareValues() {
     try {
-        const data1 = await fetchData('ValuesPage.html'); // Fetch from page 1
+        const data1 = await fetchData('https://DarthLiam93.github.io/Test-area/ValuesPage.html'); // Fetch from page 1
         const data2 = { value: 42, address: '308 N LONG' }; // Example values from page 2
 
         const bubble = document.getElementById('bubble');
