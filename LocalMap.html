@@ -2476,8 +2476,6 @@ Howell<br>
              
              //TEST AREA
              
-<div id="bubble" class="bubble">0</div>
-<script>
 async function fetchData(url) {
     const response = await fetch(url);
     const text = await response.text();
@@ -2493,51 +2491,29 @@ async function compareValues() {
         const data1 = await fetchData('https://raw.githubusercontent.com/DarthLiam93/Test-area/main/ValuesPage.html'); // Fetch from page 1
         const data2 = { value: 42, address: '308 N LONG' }; // Example values from page 2
 
-        const bubble = document.getElementById('bubble');
-        bubble.textContent = data1.value || '0'; // Default to '0' if value is NaN
+        const bubble1 = document.getElementById('bubble1');
+        const bubble2 = document.getElementById('bubble2');
+
+        bubble1.textContent = data1.value || '0'; // Display first value
 
         // Compare addresses
         if (data1.address === data2.address) {
-            bubble.style.backgroundColor = 'green'; // Addresses match
+            bubble1.style.backgroundColor = 'green'; // Addresses match
         } else {
-            bubble.style.backgroundColor = 'red'; // Addresses do not match
+            bubble1.style.backgroundColor = 'red'; // Addresses do not match
         }
-    } catch (error) {
-        console.error('Error fetching data:', error);
-    }
-}<br>
- 
-async function fetchData(url) {
-    const response = await fetch(url);
-    const text = await response.text();
-    const parser = new DOMParser();
-    const doc = parser.parseFromString(text, 'text/html');
-    const value = parseFloat(doc.querySelector('#value').textContent);
-    const address = doc.querySelector('#address').textContent;
-    return { value, address };
-}
 
-async function compareValues() {
-    try {
-        const data1 = await fetchData('https://raw.githubusercontent.com/DarthLiam93/Test-area/main/ValuesPage.html'); // Fetch from page 1
-        const data2 = { value: 42, address: '308 N LONG' }; // Example values from page 2
-
-        const bubble = document.getElementById('bubble');
-        bubble.textContent = data1.value || '0'; // Default to '0' if value is NaN
-
-        // Compare addresses
-        if (data1.address === data2.address) {
-            bubble.style.backgroundColor = 'green'; // Addresses match
-        } else {
-            bubble.style.backgroundColor = 'red'; // Addresses do not match
-        }
+        // You can also fetch another value if needed
+        // For demonstration, let's just set bubble2
+        bubble2.textContent = data2.value; // Set the second value
+        bubble2.style.backgroundColor = 'blue'; // Set a color for the second bubble
     } catch (error) {
         console.error('Error fetching data:', error);
     }
 }
 
- 
 document.addEventListener('DOMContentLoaded', compareValues);
+
 </script>
 
          // TEST AREA
