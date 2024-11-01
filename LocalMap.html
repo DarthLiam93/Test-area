@@ -2490,11 +2490,11 @@ async function fetchData(url) {
 
 async function compareValues() {
     try {
-        const data1 = await fetchData('https://raw.githubusercontent.com/DarthLiam93/Test-area/refs/heads/main/ValuesPage.html'); // Fetch from page 1
+        const data1 = await fetchData('https://raw.githubusercontent.com/DarthLiam93/Test-area/main/ValuesPage.html'); // Fetch from page 1
         const data2 = { value: 42, address: '308 N LONG' }; // Example values from page 2
 
         const bubble = document.getElementById('bubble');
-        bubble.textContent = data1.value;
+        bubble.textContent = data1.value || '0'; // Default to '0' if value is NaN
 
         // Compare addresses
         if (data1.address === data2.address) {
@@ -2507,8 +2507,9 @@ async function compareValues() {
     }
 }
 
-compareValues();
-         </script>
+document.addEventListener('DOMContentLoaded', compareValues);
+</script>
+
          // TEST AREA
              Data..</p>
         </div>
