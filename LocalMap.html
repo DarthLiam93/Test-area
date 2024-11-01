@@ -2506,7 +2506,15 @@ async function compareValues() {
         console.error('Error fetching data:', error);
     }
 }
-
+async function fetchData(url) {
+    const response = await fetch(url);
+    const text = await response.text();
+    const parser = new DOMParser();
+    const doc = parser.parseFromString(text, 'text/html');
+    const value = parseFloat(doc.querySelector('#value').textContent);
+    const address = doc.querySelector('#address').textContent;
+    return { value, address };
+}
 async function compareValues() {
     try {
         const data1 = await fetchData('https://raw.githubusercontent.com/DarthLiam93/Test-area/main/ValuesPage.html'); // Fetch from page 1
