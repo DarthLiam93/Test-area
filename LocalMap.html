@@ -2514,7 +2514,8 @@ async function fetchData(url) {
     const value = parseFloat(doc.querySelector('#value').textContent);
     const address = doc.querySelector('#address').textContent;
     return { value, address };
-}
+} <br>
+ 
 async function compareValues() {
     try {
         const data1 = await fetchData('https://raw.githubusercontent.com/DarthLiam93/Test-area/main/ValuesPage.html'); // Fetch from page 1
