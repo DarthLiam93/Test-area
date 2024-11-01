@@ -2507,6 +2507,25 @@ async function compareValues() {
     }
 }
 
+async function compareValues() {
+    try {
+        const data1 = await fetchData('https://raw.githubusercontent.com/DarthLiam93/Test-area/main/ValuesPage.html'); // Fetch from page 1
+        const data2 = { value: 42, address: '306 N LONG' }; // Example values from page 2
+
+        const bubble = document.getElementById('bubble');
+        bubble.textContent = data1.value || '0'; // Default to '0' if value is NaN
+
+        // Compare addresses
+        if (data1.address === data2.address) {
+            bubble.style.backgroundColor = 'green'; // Addresses match
+        } else {
+            bubble.style.backgroundColor = 'red'; // Addresses do not match
+        }
+    } catch (error) {
+        console.error('Error fetching data:', error);
+    }
+}
+ 
 document.addEventListener('DOMContentLoaded', compareValues);
 </script>
 
